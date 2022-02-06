@@ -4,11 +4,12 @@ import { ArrowLeft } from "../icons/ArrowLeft";
 import { ArrowRight } from "../icons/ArrowRight";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductsFetch, setFilters } from "../../store/slices/productSlice";
+import { getProductsFetch } from "../../store/slices/productSlice";
+import { setFilters } from "../../store/slices/filterSlice";
 import { getRequestString } from "../../utils/functions";
 const Pagination = () => {
   const { pages } = useSelector((state) => state.productReducer.products);
-  const filters = useSelector((state) => state.productReducer.filters);
+  const filters = useSelector((state) => state.filterReducer.filters);
   const dispatch = useDispatch();
 
   const handlePageClick = (event) => {

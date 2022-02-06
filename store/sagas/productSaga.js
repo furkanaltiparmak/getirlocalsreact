@@ -17,11 +17,11 @@ const delay = (time) => new Promise((resolve) => setTimeout(resolve, time));
 
 export function* workGetProductsFetch(action) {
   try {
+    yield call(delay, 3000);
     let products = yield call(() =>
       callAPI({ url: api.getProducts(action.payload) })
     );
-    console.log(products);
-    yield call(delay, 3000);
+
     yield put(
       getProductsSuccess({
         products: products.data,

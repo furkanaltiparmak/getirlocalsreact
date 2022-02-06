@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Check from "../icons/Check";
 import { useSelector, useDispatch } from "react-redux";
-import { getProductsFetch, setFilters } from "../../store/slices/productSlice";
+import { getProductsFetch } from "../../store/slices/productSlice";
+import { setFilters } from "../../store/slices/filterSlice";
 import { filterBySearch, getRequestString } from "../../utils/functions";
 
 const Brands = () => {
-  const brandList = useSelector((state) => state.productReducer.brands);
-  const { filters } = useSelector((state) => state.productReducer);
+  const brandList = useSelector((state) => state.filterReducer.brands);
+  const { filters } = useSelector((state) => state.filterReducer);
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState(null);
 
@@ -114,7 +115,7 @@ const Brand = styled.div`
       font-size: 14px;
       outline: none;
       border: none;
-      color: #a8a8a8;
+      color: #525252;
       ::placeholder {
         color: #a8a8a8;
       }

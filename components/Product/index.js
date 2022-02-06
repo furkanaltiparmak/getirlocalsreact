@@ -2,12 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import ProductList from "./ProductList";
 import { useSelector, useDispatch } from "react-redux";
-import { getProductsFetch, setFilters } from "../../store/slices/productSlice";
+import { getProductsFetch } from "../../store/slices/productSlice";
+import { setFilters } from "../../store/slices/filterSlice";
 import { getRequestString } from "../../utils/functions";
 
 const Products = () => {
-  const typesList = useSelector((state) => state.productReducer.types);
-  const { filters } = useSelector((state) => state.productReducer);
+  const typesList = useSelector((state) => state.filterReducer.types);
+  const { filters } = useSelector((state) => state.filterReducer);
   const { type: selected } = filters;
   const dispatch = useDispatch();
 

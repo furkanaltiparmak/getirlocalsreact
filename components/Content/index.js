@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import {
-  getProductsFetch,
-  getTags,
-  getTypes,
-  getBrands,
-  getProductsSuccess,
-} from "../../store/slices/productSlice";
+import { getProductsSuccess } from "../../store/slices/productSlice";
+import { getTags, getTypes, getBrands } from "../../store/slices/filterSlice";
 import Filters from "../Filter";
 import Products from "../Product";
 const Content = ({ products, tags, types, brands }) => {

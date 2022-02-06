@@ -3,11 +3,12 @@ import styled from "styled-components";
 import Check from "../icons/Check";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setFilters, getProductsFetch } from "../../store/slices/productSlice";
+import { getProductsFetch } from "../../store/slices/productSlice";
+import { setFilters } from "../../store/slices/filterSlice";
 import { getRequestString } from "../../utils/functions";
 
 const Sorting = () => {
-  const { filters } = useSelector((state) => state.productReducer);
+  const { filters } = useSelector((state) => state.filterReducer);
   const dispatch = useDispatch();
   const { sort } = filters;
   const sorts = [

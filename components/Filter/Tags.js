@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Check from "../icons/Check";
 import { useSelector, useDispatch } from "react-redux";
-import { setFilters, getProductsFetch } from "../../store/slices/productSlice";
+import { getProductsFetch } from "../../store/slices/productSlice";
+import { setFilters } from "../../store/slices/filterSlice";
 import { filterBySearch, getRequestString } from "../../utils/functions";
 const Tags = () => {
-  const tagList = useSelector((state) => state.productReducer.tags);
-  const { filters } = useSelector((state) => state.productReducer);
+  const tagList = useSelector((state) => state.filterReducer.tags);
+  const { filters } = useSelector((state) => state.filterReducer);
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState(null);
   const onTagClick = (val) => {

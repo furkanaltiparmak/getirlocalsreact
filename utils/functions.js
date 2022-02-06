@@ -91,3 +91,13 @@ export const filterBySearch = (data, key) => {
 
   return obj;
 };
+
+export const getTotalPrice = (cart) => {
+  const totalPrice = 0;
+
+  cart.map((item) => {
+    totalPrice += item.price * item.amount;
+  });
+
+  return totalPrice.toFixed(2);
+};
