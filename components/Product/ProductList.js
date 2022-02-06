@@ -9,30 +9,35 @@ import { useSelector } from "react-redux";
 import ProductSkeleton from "./ProductSkeleton";
 const ProductList = () => {
   const { products, isLoading } = useSelector((state) => state.productReducer);
+
   return (
     <div>
       <Container>
         <div className="gridFourColumn">
-          {isLoading
-            ? Array.apply(null, Array(16)).map((x, i) => (
-                <ProductSkeleton key={i} />
-              ))
-            : products.map((product, key) => (
-                <Product key={key}>
-                  <div className="imageContainer">
-                    <img
-                      className="image"
-                      src={`https://picsum.photos/124/124?random=${key}`}
-                    ></img>
-                  </div>
-                  <span className="price">
-                    <span>₺ </span>
-                    {product.price}
-                  </span>
-                  <h1 className="name">{product.name}</h1>
-                  <a className="productButton">Add</a>
-                </Product>
-              ))}
+          {isLoading ? (
+            Array.apply(null, Array(16)).map((x, i) => (
+              <ProductSkeleton key={i} />
+            ))
+          ) : products.products.length > 0 ? (
+            products.products.map((product, key) => (
+              <Product key={key}>
+                <div className="imageContainer">
+                  <img
+                    className="image"
+                    src={`https://picsum.photos/124/124?random=${key}`}
+                  ></img>
+                </div>
+                <span className="price">
+                  <span>₺ </span>
+                  {product.price}
+                </span>
+                <h1 className="name">{product.name}</h1>
+                <a className="productButton">Add</a>
+              </Product>
+            ))
+          ) : (
+            <div className="noProduct">No Product Found</div>
+          )}
         </div>
       </Container>
       <Pagination />
@@ -50,6 +55,11 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 124px));
     gap: 20px 24px;
+  }
+  .noProduct {
+    grid-column: span 4 / span 4;
+    text-align: center;
+    color: #6f6f6f;
   }
 `;
 

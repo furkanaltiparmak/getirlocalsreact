@@ -1,27 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Check from "../icons/Check";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setFilters, getProductsFetch } from "../../store/slices/productSlice";
+import { filterBySearch, getRequestString } from "../../utils/functions";
 const Tags = () => {
   const tagList = useSelector((state) => state.productReducer.tags);
+  const { filters } = useSelector((state) => state.productReducer);
+  const dispatch = useDispatch();
+  const [searchText, setSearchText] = useState(null);
+  const onTagClick = (val) => {
+    let filter = { ...filters, tags: val, page: 1 };
+
+    dispatch(setFilters(filter));
+    dispatch(getProductsFetch(getRequestString(filter)));
+  };
   return (
     <Container>
       <h1 className="title">Tags</h1>
       <Brand>
         <div className="searchbox">
-          <input placeholder="Search tag" />
+          <input
+            onChange={(e) => setSearchText(e.target.value)}
+            placeholder="Search tag"
+          />
         </div>
 
         <div className="flex-col">
-          <div className="checkbox">
-            <span className="checked">
-              <Check color="white" width={13} height={9} />
+          <div onClick={() => onTagClick("")} className="checkbox">
+            <span
+              className={`${filters.tags === "" ? "checked" : "unchecked"}`}
+            >
+              {filters.tags === "" && (
+                <Check color="white" width={13} height={9} />
+              )}
             </span>
             All
           </div>
-          {Object.keys(tagList).map((tag, key) => (
-            <div key={key} className="checkbox">
-              <span className="unchecked"></span>
+          {Object.keys(filterBySearch(tagList, searchText)).map((tag, key) => (
+            <div onClick={() => onTagClick(tag)} key={key} className="checkbox">
+              <span
+                className={`${filters.tags === tag ? "checked" : "unchecked"}`}
+              >
+                {filters.tags === tag && (
+                  <Check color="white" width={13} height={9} />
+                )}
+              </span>
               {tag}
               <span>({tagList[tag]})</span>
             </div>

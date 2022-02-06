@@ -7,11 +7,9 @@ import {
 } from "../slices/productSlice";
 import { api } from "../../services/api";
 
-let callAPI = async ({ url, method, data }) => {
+let callAPI = async ({ url }) => {
   return await Axios({
     url,
-    method,
-    data,
   });
 };
 
@@ -22,13 +20,20 @@ export function* workGetProductsFetch(action) {
     let products = yield call(() =>
       callAPI({ url: api.getProducts(action.payload) })
     );
+    console.log(products);
     yield call(delay, 3000);
-    yield put(getProductsSuccess(products.data));
+    yield put(
+      getProductsSuccess({
+        products: products.data,
+        pages: Math.ceil(products.headers["x-total-count"] / 16),
+        total_count: Number(products.headers["x-total-count"]),
+      })
+    );
   } catch (e) {
     yield put(getProductsFailure());
   }
 }
 
 export default function* rootSaga() {
-  yield throttle(3000, "products/getProductsFetch", workGetProductsFetch);
+  yield takeEvery("products/getProductsFetch", workGetProductsFetch);
 }

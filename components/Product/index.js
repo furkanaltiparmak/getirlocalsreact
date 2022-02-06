@@ -1,17 +1,32 @@
 import React from "react";
 import styled from "styled-components";
 import ProductList from "./ProductList";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getProductsFetch, setFilters } from "../../store/slices/productSlice";
+import { getRequestString } from "../../utils/functions";
 
 const Products = () => {
   const typesList = useSelector((state) => state.productReducer.types);
+  const { filters } = useSelector((state) => state.productReducer);
+  const { type: selected } = filters;
+  const dispatch = useDispatch();
 
+  const onTypeSelect = (val) => {
+    let filter = { ...filters, type: val, page: 1 };
+
+    dispatch(setFilters(filter));
+    dispatch(getProductsFetch(getRequestString(filter)));
+  };
   return (
     <Container>
       <h1 className="title">Products</h1>
       <div className="filter">
         {typesList.map((type, key) => (
-          <span key={key} className="button">
+          <span
+            onClick={() => onTypeSelect(type)}
+            key={key}
+            className={`button ${type === selected ? "typeSelected" : ""} `}
+          >
             {type}
           </span>
         ))}

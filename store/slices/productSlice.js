@@ -1,11 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  products: [],
-  companies: [],
+  products: { pages: 0, total_count: 0, products: [] },
+  filters: {
+    sort: { sortBy: "asc", key: "price" },
+    brand: "",
+    tags: "",
+    type: "",
+    page: 1,
+  },
   tags: [],
   types: [],
   brands: [],
+  cart: [],
   isLoading: false,
 };
 
@@ -23,9 +30,6 @@ export const productSlice = createSlice({
     getProductsFailure: (state) => {
       state.isLoading = false;
     },
-    getCompanies: (state, { payload }) => {
-      state.companies = payload;
-    },
     getTags: (state, { payload }) => {
       state.tags = payload;
     },
@@ -35,6 +39,9 @@ export const productSlice = createSlice({
     getBrands: (state, { payload }) => {
       state.brands = payload;
     },
+    setFilters: (state, { payload }) => {
+      state.filters = payload;
+    },
   },
 });
 
@@ -42,10 +49,10 @@ export const {
   getProductsFetch,
   getProductsSuccess,
   getProductsFailure,
-  getCompanies,
   getTags,
   getTypes,
   getBrands,
+  setFilters,
 } = productSlice.actions;
 
 export default productSlice.reducer;

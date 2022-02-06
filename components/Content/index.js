@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import {
   getProductsFetch,
-  getCompanies,
   getTags,
   getTypes,
   getBrands,
@@ -11,10 +10,9 @@ import {
 } from "../../store/slices/productSlice";
 import Filters from "../Filter";
 import Products from "../Product";
-const Content = ({ companies, products, tags, types, brands }) => {
+const Content = ({ products, tags, types, brands }) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCompanies(companies));
     dispatch(getTags(tags));
     dispatch(getTypes(types));
     dispatch(getBrands(brands));

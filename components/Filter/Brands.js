@@ -1,32 +1,68 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Check from "../icons/Check";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getProductsFetch, setFilters } from "../../store/slices/productSlice";
+import { filterBySearch, getRequestString } from "../../utils/functions";
+
 const Brands = () => {
   const brandList = useSelector((state) => state.productReducer.brands);
+  const { filters } = useSelector((state) => state.productReducer);
+  const dispatch = useDispatch();
+  const [searchText, setSearchText] = useState(null);
+
+  const onBrandClick = (val) => {
+    let filter = { ...filters, brand: val };
+
+    dispatch(setFilters(filter));
+    dispatch(getProductsFetch(getRequestString(filter)));
+  };
 
   return (
     <Container>
       <h1 className="title">Brands</h1>
       <Brand>
         <div className="searchbox">
-          <input placeholder="Search brand" />
+          <input
+            onChange={(e) => setSearchText(e.target.value)}
+            placeholder="Search brand"
+          />
         </div>
 
         <div className="flex-col">
-          <div className="checkbox">
-            <span className="checked">
-              <Check color="white" width={13} height={9} />
+          <div onClick={() => onBrandClick("")} className="checkbox">
+            <span
+              className={`${filters.brand === "" ? "checked" : "unchecked"}`}
+            >
+              {filters.brand === "" && (
+                <Check color="white" width={13} height={9} />
+              )}
             </span>
             All
           </div>
-          {Object.keys(brandList).map((brand, key) => (
-            <div key={key} className="checkbox">
-              <span className="unchecked"></span>
-              {brand}
-              <span>({brandList[brand]})</span>
-            </div>
-          ))}
+          {Object.keys(filterBySearch(brandList, searchText)).map(
+            (brand, key) => (
+              <div
+                onClick={() => onBrandClick(brandList[brand].slug)}
+                key={key}
+                className="checkbox"
+              >
+                <span
+                  className={`${
+                    filters.brand === brandList[brand].slug
+                      ? "checked"
+                      : "unchecked"
+                  }`}
+                >
+                  {filters.brand === brandList[brand].slug && (
+                    <Check color="white" width={13} height={9} />
+                  )}
+                </span>
+                {brand}
+                <span>({brandList[brand].count})</span>
+              </div>
+            )
+          )}
         </div>
       </Brand>
     </Container>
@@ -95,6 +131,8 @@ const Brand = styled.div`
     .checkbox {
       padding-left: 4px;
       padding-top: 4px;
+      cursor: pointer;
+
       span {
         color: #a8a8a8;
         margin-left: 4px;

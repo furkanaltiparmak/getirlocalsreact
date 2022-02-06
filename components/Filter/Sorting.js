@@ -1,32 +1,63 @@
 import React from "react";
 import styled from "styled-components";
 import Check from "../icons/Check";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setFilters, getProductsFetch } from "../../store/slices/productSlice";
+import { getRequestString } from "../../utils/functions";
+
 const Sorting = () => {
+  const { filters } = useSelector((state) => state.productReducer);
+  const dispatch = useDispatch();
+  const { sort } = filters;
+  const sorts = [
+    {
+      name: "Price low to high",
+      value: { sortBy: "asc", key: "price" },
+      selected: sort.sortBy === "asc" && sort.key === "price" && true,
+    },
+    {
+      name: "Price high to low",
+      value: { sortBy: "desc", key: "price" },
+      selected: sort.sortBy === "desc" && sort.key === "price" && true,
+    },
+    {
+      name: "New to old",
+      value: { sortBy: "asc", key: "added" },
+      selected: sort.sortBy === "asc" && sort.key === "added" && true,
+    },
+    {
+      name: "Old to new",
+      value: { sortBy: "desc", key: "added" },
+      selected: sort.sortBy === "desc" && sort.key === "added" && true,
+    },
+  ];
+
+  const onSortClick = (val) => {
+    let filter = { ...filters, sort: val, page: 1 };
+
+    dispatch(setFilters(filter));
+    dispatch(getProductsFetch(getRequestString(filter)));
+  };
+
   return (
     <Container>
       <h1 className="title">Sorting</h1>
       <Sort>
-        <div>
-          <span className="checked">
-            <Check width={10} height={7} color={"#1ea4ce"} />
-          </span>
-          Price low to high
-        </div>
-
-        <div>
-          <span className="unchecked"></span>
-          Price high to low
-        </div>
-
-        <div>
-          <span className="unchecked"></span>
-          New to old
-        </div>
-
-        <div>
-          <span className="unchecked"></span>
-          Old to new
-        </div>
+        {sorts.map((sort, key) => (
+          <div
+            className="wrapper"
+            key={key}
+            onClick={() => onSortClick(sort.value)}
+          >
+            <span className={`${sort.selected ? "checked" : "unchecked"}`}>
+              {sort.selected && (
+                <Check width={10} height={7} color={"#1ea4ce"} />
+              )}
+            </span>
+            {sort.name}
+          </div>
+        ))}
       </Sort>
     </Container>
   );
@@ -57,6 +88,9 @@ const Sort = styled.div`
   color: #525252;
   padding-top: 24px;
   padding-left: 24px;
+  .wrapper {
+    cursor: pointer;
+  }
   div {
     display: flex;
     font-size: 14px;

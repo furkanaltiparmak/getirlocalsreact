@@ -3,15 +3,19 @@ import styled from "styled-components";
 import { ArrowLeft } from "../icons/ArrowLeft";
 import { ArrowRight } from "../icons/ArrowRight";
 import ReactPaginate from "react-paginate";
-import { useDispatch } from "react-redux";
-import { getProductsFetch } from "../../store/slices/productSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductsFetch, setFilters } from "../../store/slices/productSlice";
+import { getRequestString } from "../../utils/functions";
 const Pagination = () => {
+  const { pages } = useSelector((state) => state.productReducer.products);
+  const filters = useSelector((state) => state.productReducer.filters);
   const dispatch = useDispatch();
 
   const handlePageClick = (event) => {
-    const offset = event.selected * 16;
+    const filter = { ...filters, page: event.selected + 1 };
 
-    dispatch(getProductsFetch(offset));
+    dispatch(setFilters(filter));
+    dispatch(getProductsFetch(getRequestString(filter)));
   };
   return (
     <Container>
@@ -24,13 +28,14 @@ const Pagination = () => {
         }
         onPageChange={handlePageClick}
         pageRangeDisplayed={4}
-        pageCount={140}
+        pageCount={pages}
         previousLabel={
           <div className="pagBtn pagBtnPrev">
             <ArrowLeft /> <span>Prev</span>
           </div>
         }
         renderOnZeroPageCount={null}
+        forcePage={filters.page - 1}
       />
     </Container>
   );
@@ -41,6 +46,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  color:#697488;
   ul{
     list-style-type:none;
     display:flex;
@@ -68,6 +74,9 @@ const Container = styled.div`
   .pagBtnNext{
     span{
       margin-right:7px;
+    }
+    &:hover {
+      color:#1ea4ce;
     }
   }
   .pagBtnPrev{
