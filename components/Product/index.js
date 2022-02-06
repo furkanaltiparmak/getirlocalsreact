@@ -1,9 +1,13 @@
+//Modules
 import React from "react";
 import styled from "styled-components";
-import ProductList from "./ProductList";
 import { useSelector, useDispatch } from "react-redux";
+//Components
+import ProductList from "./ProductList";
+//Store Actions
 import { getProductsFetch } from "../../store/slices/productSlice";
 import { setFilters } from "../../store/slices/filterSlice";
+//Functions
 import { getRequestString } from "../../utils/functions";
 
 const Products = () => {

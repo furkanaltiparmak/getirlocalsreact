@@ -1,10 +1,14 @@
+//Modules
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
+//Store Actions
 import { getProductsSuccess } from "../../store/slices/productSlice";
 import { getTags, getTypes, getBrands } from "../../store/slices/filterSlice";
+//Components
 import Filters from "../Filter";
 import Products from "../Product";
+
 const Content = ({ products, tags, types, brands }) => {
   const dispatch = useDispatch();
   useEffect(() => {

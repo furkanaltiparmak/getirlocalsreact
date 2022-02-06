@@ -1,6 +1,10 @@
+//Components
 import Content from "../components/Content";
+//Api
 import { api } from "../services/api";
+//Modules
 import axios from "axios";
+//Functions
 import { getBrands, getTags, getTypes } from "../utils/functions";
 const Home = ({ products, tags, types, brands }) => {
   return (

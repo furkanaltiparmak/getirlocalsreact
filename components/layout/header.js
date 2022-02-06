@@ -1,7 +1,9 @@
 //Modules
 import React from "react";
 import styled from "styled-components";
+//Logo
 import Logo from "../icons/Logo";
+//Components
 import ShoppingCart from "../Cart";
 const Header = () => {
   return (

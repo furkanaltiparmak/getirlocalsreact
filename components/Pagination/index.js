@@ -1,12 +1,17 @@
+//Modules
 import React from "react";
 import styled from "styled-components";
-import { ArrowLeft } from "../icons/ArrowLeft";
-import { ArrowRight } from "../icons/ArrowRight";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
+//Icons
+import { ArrowLeft } from "../icons/ArrowLeft";
+import { ArrowRight } from "../icons/ArrowRight";
+//Store Actions
 import { getProductsFetch } from "../../store/slices/productSlice";
 import { setFilters } from "../../store/slices/filterSlice";
+//Functions
 import { getRequestString } from "../../utils/functions";
+
 const Pagination = () => {
   const { pages } = useSelector((state) => state.productReducer.products);
   const filters = useSelector((state) => state.filterReducer.filters);

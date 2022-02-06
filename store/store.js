@@ -1,11 +1,12 @@
+//Modules
 import createSagaMiddleware from "redux-saga";
-
+import { configureStore } from "@reduxjs/toolkit";
+//Store Reducers
 import productReducer from "./slices/productSlice";
 import filterReducer from "./slices/filterSlice";
 import cartReducer from "./slices/cartSlice";
+//Sagas
 import rootSaga from "./sagas/productSaga";
-
-import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
 
 let sagaMiddleware = createSagaMiddleware();
 

@@ -9,6 +9,7 @@ import EmptyCart from "./EmptyCart";
 import CartItem from "./CartItem";
 // Functions
 import { getTotalPrice } from "../../utils/functions";
+
 const ShoppingCart = () => {
   const { cart } = useSelector((state) => state.cartReducer);
   const [isCartOpen, setIsCartOpen] = useState(false);

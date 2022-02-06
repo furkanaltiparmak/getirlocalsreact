@@ -1,5 +1,7 @@
+//Modules
 import React from "react";
 import styled from "styled-components";
+//Components
 import Sorting from "./Sorting";
 import Brands from "./Brands";
 import Tags from "./Tags";

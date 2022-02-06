@@ -1,10 +1,15 @@
+//Modules
 import React, { useState } from "react";
 import styled from "styled-components";
-import Check from "../icons/Check";
 import { useSelector, useDispatch } from "react-redux";
+//Icons
+import Check from "../icons/Check";
+//Store Actions
 import { getProductsFetch } from "../../store/slices/productSlice";
 import { setFilters } from "../../store/slices/filterSlice";
+//Functions
 import { filterBySearch, getRequestString } from "../../utils/functions";
+
 const Tags = () => {
   const tagList = useSelector((state) => state.filterReducer.tags);
   const { filters } = useSelector((state) => state.filterReducer);

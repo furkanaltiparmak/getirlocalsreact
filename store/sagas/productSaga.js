@@ -1,10 +1,9 @@
+//Modules
 import { call, takeEvery, put, throttle } from "redux-saga/effects";
 import Axios from "axios";
-import {
-  getProductsFetch,
-  getProductsSuccess,
-  getProductsFailure,
-} from "../slices/productSlice";
+//Store Actions
+import { getProductsSuccess, getProductsFailure } from "../slices/productSlice";
+//Api
 import { api } from "../../services/api";
 
 let callAPI = async ({ url }) => {

@@ -1,10 +1,13 @@
+//Modules
 import React from "react";
 import styled from "styled-components";
+//Icons
 import Check from "../icons/Check";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+//Store Actions
 import { getProductsFetch } from "../../store/slices/productSlice";
 import { setFilters } from "../../store/slices/filterSlice";
+//Functions
 import { getRequestString } from "../../utils/functions";
 
 const Sorting = () => {

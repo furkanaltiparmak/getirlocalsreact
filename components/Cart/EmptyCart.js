@@ -1,5 +1,7 @@
+// Modules
 import React from "react";
 import styled from "styled-components";
+
 const EmptyCart = () => {
   return <Cart>Cart is empty</Cart>;
 };
