@@ -37,7 +37,9 @@ const Brands = () => {
         <div className="flex-col">
           <div onClick={() => onBrandClick("")} className="checkbox">
             <span
-              className={`${filters.brand === "" ? "checked" : "unchecked"}`}
+              className={`checkWrapper ${
+                filters.brand === "" ? "flex bg-primary" : ""
+              }`}
             >
               {filters.brand === "" && (
                 <Check color="white" width={13} height={9} />
@@ -53,18 +55,20 @@ const Brands = () => {
                 className="checkbox"
               >
                 <span
-                  className={`${
+                  className={`checkWrapper ${
                     filters.brand === brandList[brand].slug
-                      ? "checked"
-                      : "unchecked"
+                      ? "flex bg-primary"
+                      : ""
                   }`}
                 >
                   {filters.brand === brandList[brand].slug && (
                     <Check color="white" width={13} height={9} />
                   )}
                 </span>
-                {brand}
-                <span>({brandList[brand].count})</span>
+                <div className="option-text">
+                  {brand}
+                  <span>({brandList[brand].count})</span>
+                </div>
               </div>
             )
           )}
@@ -92,7 +96,7 @@ const Container = styled.div`
 const Brand = styled.div`
   width: 100%;
   height: 244px;
-  background-color: white;
+  background-color: var(--main-white-color);
   display: flex;
   flex-direction: column;
   border-radius: 2px;
@@ -152,34 +156,15 @@ const Brand = styled.div`
       border-radius: 4px;
     }
   }
-  .checked {
+  .checkWrapper {
     width: 22px;
     height: 22px;
-    background-color: #1ea4ce;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-right: 8px;
     margin-bottom: 18px;
-    -webkit-box-shadow: 0px 0px 7px 1px rgba(93, 56, 192, 0.25);
-    box-shadow: 0px 0px 7px 1px rgba(93, 56, 192, 0.25);
     border-radius: 2px;
-    position: relative;
-    z-index: 3;
+    box-shadow: 0px 0px 7px 1px rgba(93, 56, 192, 0.25);
   }
-  .unchecked {
-    width: 22px;
-    height: 22px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 8px;
-    margin-bottom: 18px;
-    -webkit-box-shadow: 0px 0px 7px 1px rgba(93, 56, 192, 0.25);
-    box-shadow: 0px 0px 7px 1px rgba(93, 56, 192, 0.25);
-    border-radius: 2px;
-    position: relative;
-    z-index: 5;
+  .option-text {
+    width: 200px;
   }
 `;

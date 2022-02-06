@@ -35,7 +35,9 @@ const Tags = () => {
         <div className="flex-col">
           <div onClick={() => onTagClick("")} className="checkbox">
             <span
-              className={`${filters.tags === "" ? "checked" : "unchecked"}`}
+              className={`checkWrapper ${
+                filters.tags === "" ? "flex bg-primary" : ""
+              }`}
             >
               {filters.tags === "" && (
                 <Check color="white" width={13} height={9} />
@@ -46,7 +48,9 @@ const Tags = () => {
           {Object.keys(filterBySearch(tagList, searchText)).map((tag, key) => (
             <div onClick={() => onTagClick(tag)} key={key} className="checkbox">
               <span
-                className={`${filters.tags === tag ? "checked" : "unchecked"}`}
+                className={`checkWrapper ${
+                  filters.tags === tag ? "flex bg-primary" : ""
+                }`}
               >
                 {filters.tags === tag && (
                   <Check color="white" width={13} height={9} />
@@ -80,7 +84,7 @@ const Container = styled.div`
 const Brand = styled.div`
   width: 100%;
   height: 244px;
-  background-color: white;
+  background-color: var(--main-white-color);
   display: flex;
   flex-direction: column;
   border-radius: 2px;
@@ -119,10 +123,10 @@ const Brand = styled.div`
     overflow: scroll;
     height: 142px;
     width: 248px;
-    position: relative;
-    z-index: 1;
     .checkbox {
-      padding-left: 2px;
+      padding-left: 4px;
+      padding-top: 4px;
+      cursor: pointer;
       span {
         color: #a8a8a8;
         margin-left: 4px;
@@ -137,34 +141,12 @@ const Brand = styled.div`
       border-radius: 4px;
     }
   }
-  .checked {
+  .checkWrapper {
     width: 22px;
     height: 22px;
-    background-color: #1ea4ce;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-right: 8px;
     margin-bottom: 18px;
-    -webkit-box-shadow: 0px 0px 7px 1px rgba(93, 56, 192, 0.25);
-    box-shadow: 0px 0px 7px 1px rgba(93, 56, 192, 0.25);
     border-radius: 2px;
-    position: relative;
-    z-index: 3;
-  }
-  .unchecked {
-    width: 22px;
-    height: 22px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 8px;
-    margin-bottom: 18px;
-    -webkit-box-shadow: 0px 0px 7px 1px rgba(93, 56, 192, 0.25);
     box-shadow: 0px 0px 7px 1px rgba(93, 56, 192, 0.25);
-    border-radius: 2px;
-    position: relative;
-    z-index: 5;
   }
 `;

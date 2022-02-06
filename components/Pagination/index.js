@@ -26,9 +26,9 @@ const Pagination = () => {
   return (
     <Container>
       <ReactPaginate
-        breakLabel={<div className="breakLabel">...</div>}
+        breakLabel={<div>...</div>}
         nextLabel={
-          <div className="pagBtn pagBtnNext">
+          <div className="flex pagBtnNext">
             <span>Next</span> <ArrowRight />
           </div>
         }
@@ -36,7 +36,7 @@ const Pagination = () => {
         pageRangeDisplayed={4}
         pageCount={pages}
         previousLabel={
-          <div className="pagBtn pagBtnPrev">
+          <div className="flex pagBtnPrev">
             <ArrowLeft /> <span>Prev</span>
           </div>
         }
@@ -68,14 +68,9 @@ const Container = styled.div`
       align-items:center;
       &:hover {
         cursor:pointer;
-        color:#1EA4CE;
+        color:var(--main-blue-color);
       }
     }
-  }
-  .pagBtn {
-    display:flex;
-    justify-content:center;
-      align-items:center;
   }
   .pagBtnNext{
     span{
@@ -91,13 +86,8 @@ const Container = styled.div`
       margin-left:7px;
     }
   }
-  .breakLabel {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-  }
   .selected{
-    background-color: #1ea4ce;
+    background-color: var(--main-blue-color);
     color: white;
     border-radius:2px;
     pointer-events:none;

@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 const EmptyCart = () => {
-  return <Cart>Cart is empty</Cart>;
+  return <Cart className="flex">Cart is empty</Cart>;
 };
 
 export default EmptyCart;
@@ -13,14 +13,11 @@ const Cart = styled.div`
   bottom: -140px;
   width: 296px;
   height: 100px;
-  border: 8px solid #1ea4ce;
+  border: 8px solid var(--main-blue-color);
   right: 0;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   font-size: 20px;
-  background-color: white;
-  color: #6f6f6f;
+  background-color: var(--main-white-color);
+  color: var(--main-dark-color);
   cursor: initial;
 `;

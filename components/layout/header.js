@@ -8,7 +8,7 @@ import ShoppingCart from "../Cart";
 const Header = () => {
   return (
     <Container>
-      <LogoContainer>
+      <LogoContainer className="flex">
         <Logo />
       </LogoContainer>
       <ShoppingCart />
@@ -22,7 +22,7 @@ const Container = styled.header`
   background-color: #1ea4ce;
   width: 100%;
   height: 77px;
-  color: white;
+  color: var(--main-white-color);
   display: grid;
   grid-template-columns: repeat(12, 88px);
   gap: 16px;
@@ -30,9 +30,6 @@ const Container = styled.header`
 `;
 
 const LogoContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 142px;
   grid-column: span 2 / span 2;
   grid-column-start: 6;

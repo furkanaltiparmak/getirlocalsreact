@@ -26,13 +26,13 @@ const CartItem = ({ name, price, amount, slug }) => {
           <span className="price">₺{price}</span>
         </div>
         <div className="quantityContainer">
-          <div className="buttonWrapper" onClick={() => onRemoveClick()}>
+          <div className="buttonWrapper flex" onClick={() => onRemoveClick()}>
             <Minus />
           </div>
-          <div className="quantity">
+          <div className="quantity flex">
             <span>{amount}</span>
           </div>
-          <div className="buttonWrapper" onClick={() => onAddClick()}>
+          <div className="buttonWrapper flex" onClick={() => onAddClick()}>
             <Plus />
           </div>
         </div>
@@ -60,9 +60,6 @@ const ItemWrapper = styled.div`
   .buttonWrapper {
     height: 100%;
     width: 21px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
   }
   .quantityContainer {
@@ -73,17 +70,14 @@ const ItemWrapper = styled.div`
     height: 33px;
   }
   .price {
-    color: #1ea4ce;
+    color: var(--main-blue-color);
     font-weight: 500;
   }
   .quantity {
     background-color: #1ea4ce;
-    color: white;
+    color: var(--main-white-color);
     width: 32px;
     height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-weight: bold;
     margin-left: 4px;
     margin-right: 4px;

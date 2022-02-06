@@ -30,7 +30,9 @@ const Products = () => {
           <span
             onClick={() => onTypeSelect(type)}
             key={key}
-            className={`button ${type === selected ? "typeSelected" : ""} `}
+            className={`button flex ${
+              type === selected ? "typeSelected" : ""
+            } `}
           >
             {type}
           </span>
@@ -51,7 +53,7 @@ const Container = styled.div`
 
   .title {
     font-size: 20px;
-    color: #6f6f6f;
+    color: var(--main-dark-color);
     font-weight: 400;
     margin-top: 0;
   }
@@ -60,9 +62,6 @@ const Container = styled.div`
     margin-bottom: 16px;
   }
   .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 6px;
     width: 60px;
     height: 30px;
@@ -71,15 +70,14 @@ const Container = styled.div`
     font-weight: 600;
     background-color: #f2f0fd;
     color: #1ea4ce;
-    margin-left: 4px;
+    margin-right: 8px;
     &:hover {
       cursor: pointer;
     }
   }
 
   .typeSelected {
-    background-color: #1ea4ce;
-    color: white;
-    margin-right: 4px;
+    background-color: var(--main-blue-color);
+    color: var(--main-white-color);
   }
 `;

@@ -15,7 +15,7 @@ const Product = ({ random, price, name, slug }) => {
 
   return (
     <ProductWrapper>
-      <div className="imageContainer">
+      <div className="imageContainer flex">
         <img
           className="image"
           src={`https://picsum.photos/124/124?random=${random}`}
@@ -26,7 +26,7 @@ const Product = ({ random, price, name, slug }) => {
         {price}
       </span>
       <h1 className="name">{name}</h1>
-      <a onClick={() => onAddClick(slug)} className="productButton">
+      <a onClick={() => onAddClick(slug)} className="productButton flex">
         Add
       </a>
     </ProductWrapper>
@@ -45,9 +45,6 @@ const ProductWrapper = styled.div`
     height: 124px;
     border-radius: 12px;
     border: 2px solid #f3f0fe;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 8px;
   }
   .image {
@@ -55,7 +52,7 @@ const ProductWrapper = styled.div`
     height: 92px;
   }
   .price {
-    color: #1ea4ce;
+    color: var(--main-blue-color);
     font-size: 14px;
     font-weight: 700;
     span {
@@ -73,10 +70,7 @@ const ProductWrapper = styled.div`
     width: 100%;
     display: flex;
     height: 22px;
-    background-color: #1ea4ce;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: var(--main-blue-color);
     color: white;
     font-size: 12px;
     font-weight: 500;

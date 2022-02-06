@@ -15,7 +15,7 @@ const ShoppingCart = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const dispatch = useDispatch();
   return (
-    <CartContainer>
+    <CartContainer className="flex">
       <div className="cartBtn" onClick={() => setIsCartOpen(!isCartOpen)}>
         <Lock />
         <span>₺ {getTotalPrice(cart)}</span>
@@ -46,9 +46,6 @@ const CartContainer = styled.div`
   grid-column-start: 12;
   background-color: #147594;
   width: 129px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
   justify-self: end;
   &:hover {
@@ -76,7 +73,7 @@ const Cart = styled.div`
   flex-direction: column;
   align-items: center;
   font-size: 14px;
-  background-color: white;
+  background-color: var(--main-white-color);
   cursor: initial;
   .cartItemWrapper {
     height: 228px;
@@ -99,7 +96,7 @@ const TotalPrice = styled.div`
   width: 231px;
   bottom: 16px;
   span {
-    border: 2px solid #1ea4ce;
+    border: 2px solid var(--main-blue-color);
     color: #1ea4ce;
     padding: 16px;
     width: 92px;

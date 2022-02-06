@@ -42,7 +42,7 @@ export default ProductList;
 const Container = styled.div`
   padding: 20px;
   margin-bottom: 32px;
-  background-color: white;
+  background-color: var(--main-white-color);
   .gridFourColumn {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 124px));
@@ -51,6 +51,6 @@ const Container = styled.div`
   .noProduct {
     grid-column: span 4 / span 4;
     text-align: center;
-    color: #6f6f6f;
+    color: var(--main-dark-color);
   }
 `;

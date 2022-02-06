@@ -54,7 +54,7 @@ const Sorting = () => {
             key={key}
             onClick={() => onSortClick(sort.value)}
           >
-            <span className={`${sort.selected ? "checked" : "unchecked"}`}>
+            <span className={`${sort.selected ? "checked flex" : "unchecked"}`}>
               {sort.selected && (
                 <Check width={10} height={7} color={"#1ea4ce"} />
               )}
@@ -85,7 +85,7 @@ const Container = styled.div`
 const Sort = styled.div`
   width: 100%;
   height: 184px;
-  background-color: white;
+  background-color: var(--main-white-color);
   display: flex;
   flex-direction: column;
   border-radius: 2px;
@@ -103,10 +103,7 @@ const Sort = styled.div`
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    border: 2px solid #1ea4ce;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border: 2px solid var(--main-blue-color);
     margin-right: 12px;
     margin-bottom: 16px;
   }

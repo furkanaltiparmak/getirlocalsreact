@@ -20,7 +20,7 @@ const Container = styled.div`
   justify-content: center;
   padding-top: 136px;
   padding-bottom: 40px;
-  color: #1ea4ce;
+  color: var(--main-blue-color);
   .dot {
     margin-right: 16px;
     margin-left: 16px;
