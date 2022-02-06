@@ -5,89 +5,34 @@ import styled from "styled-components";
 import Image from "next/image";
 //Components
 import Pagination from "../Pagination";
+import { useSelector } from "react-redux";
+import ProductSkeleton from "./ProductSkeleton";
 const ProductList = () => {
+  const { products, isLoading } = useSelector((state) => state.productReducer);
   return (
     <div>
       <Container>
         <div className="gridFourColumn">
-          <Product>
-            <div className="imageContainer">
-              <img
-                className="image"
-                src="https://images.unsplash.com/photo-1495615080073-6b89c9839ce0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2048&q=80"
-              ></img>
-            </div>
-            <span className="price">
-              <span>₺ </span>14.99
-            </span>
-            <h1 className="name">Gorgeous Office Mug</h1>
-            <a className="productButton">Add</a>
-          </Product>
-          <Product>
-            <div className="imageContainer">
-              <img
-                className="image"
-                src="https://images.unsplash.com/photo-1495615080073-6b89c9839ce0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2048&q=80"
-              ></img>
-            </div>
-            <span className="price">
-              <span>₺ </span>14.99
-            </span>
-            <h1 className="name">Gorgeous Office Mug</h1>
-            <a className="productButton">Add</a>
-          </Product>
-          <Product>
-            <div className="imageContainer">
-              <img
-                className="image"
-                src="https://images.unsplash.com/photo-1495615080073-6b89c9839ce0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2048&q=80"
-              ></img>
-            </div>
-            <span className="price">
-              <span>₺ </span>14.99
-            </span>
-            <h1 className="name">Gorgeous Office Mug</h1>
-            <a className="productButton">Add</a>
-          </Product>
-          <Product>
-            <div className="imageContainer">
-              <img
-                className="image"
-                src="https://images.unsplash.com/photo-1495615080073-6b89c9839ce0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2048&q=80"
-              ></img>
-            </div>
-            <span className="price">
-              <span>₺ </span>14.99
-            </span>
-            <h1 className="name">Gorgeous Office Mug</h1>
-            <a className="productButton">Add</a>
-          </Product>
-          <Product>
-            <div className="imageContainer">
-              <img
-                className="image"
-                src="https://images.unsplash.com/photo-1495615080073-6b89c9839ce0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2048&q=80"
-              ></img>
-            </div>
-            <span className="price">
-              <span>₺ </span>14.99
-            </span>
-            <h1 className="name">Gorgeous Office Mug</h1>
-            <a className="productButton">Add</a>
-          </Product>
-          <Product>
-            <div className="imageContainer">
-              <img
-                className="image"
-                src="https://images.unsplash.com/photo-1495615080073-6b89c9839ce0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2048&q=80"
-              ></img>
-            </div>
-            <span className="price">
-              <span>₺ </span>14.99
-            </span>
-            <h1 className="name">Gorgeous Office Mug</h1>
-            <a className="productButton">Add</a>
-          </Product>
+          {isLoading
+            ? Array.apply(null, Array(16)).map((x, i) => (
+                <ProductSkeleton key={i} />
+              ))
+            : products.map((product, key) => (
+                <Product key={key}>
+                  <div className="imageContainer">
+                    <img
+                      className="image"
+                      src={`https://picsum.photos/124/124?random=${key}`}
+                    ></img>
+                  </div>
+                  <span className="price">
+                    <span>₺ </span>
+                    {product.price}
+                  </span>
+                  <h1 className="name">{product.name}</h1>
+                  <a className="productButton">Add</a>
+                </Product>
+              ))}
         </div>
       </Container>
       <Pagination />
@@ -131,16 +76,17 @@ const Product = styled.div`
   .price {
     color: #1ea4ce;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 700;
     span {
       font-weight: 400;
     }
   }
   .name {
     color: #191919;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     margin-bottom: 9px;
+    height: 40px;
   }
   .productButton {
     width: 100%;

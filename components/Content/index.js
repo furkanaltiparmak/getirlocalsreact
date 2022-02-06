@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import {
+  getProductsFetch,
+  getCompanies,
+  getTags,
+  getTypes,
+  getBrands,
+  getProductsSuccess,
+} from "../../store/slices/productSlice";
 import Filters from "../Filter";
 import Products from "../Product";
-const Content = () => {
+const Content = ({ companies, products, tags, types, brands }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCompanies(companies));
+    dispatch(getTags(tags));
+    dispatch(getTypes(types));
+    dispatch(getBrands(brands));
+    dispatch(getProductsSuccess(products));
+  }, [dispatch]);
+
   return (
     <Container>
       <div className="grid">

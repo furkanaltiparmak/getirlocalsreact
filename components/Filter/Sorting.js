@@ -39,10 +39,11 @@ const Container = styled.div`
   height: 214px;
   margin-bottom: 24px;
   .title {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 13px;
     color: #697488;
     margin-bottom: 12px;
+    margin-top: 0;
   }
 `;
 

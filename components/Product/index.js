@@ -1,13 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import ProductList from "./ProductList";
+import { useSelector } from "react-redux";
+
 const Products = () => {
+  const typesList = useSelector((state) => state.productReducer.types);
+
   return (
     <Container>
       <h1 className="title">Products</h1>
       <div className="filter">
-        <span className="button mug">mug</span>
-        <span className="button shirt">shirt</span>
+        {typesList.map((type, key) => (
+          <span key={key} className="button">
+            {type}
+          </span>
+        ))}
       </div>
       <ProductList />
     </Container>
@@ -41,20 +48,18 @@ const Container = styled.div`
     height: 30px;
     border-radius: 2px;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 600;
+    background-color: #f2f0fd;
+    color: #1ea4ce;
+    margin-left: 4px;
     &:hover {
       cursor: pointer;
     }
   }
 
-  .mug {
+  .typeSelected {
     background-color: #1ea4ce;
     color: white;
     margin-right: 4px;
-  }
-  .shirt {
-    background-color: #f2f0fd;
-    color: #1ea4ce;
-    margin-left: 4px;
   }
 `;

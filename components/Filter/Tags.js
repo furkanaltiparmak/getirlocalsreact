@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Check from "../icons/Check";
+import { useSelector } from "react-redux";
 const Tags = () => {
+  const tagList = useSelector((state) => state.productReducer.tags);
   return (
     <Container>
       <h1 className="title">Tags</h1>
@@ -16,31 +18,14 @@ const Tags = () => {
               <Check color="white" width={13} height={9} />
             </span>
             All
-            <span>(18)</span>
           </div>
-
-          <div className="checkbox">
-            <span className="unchecked"></span>
-            Beach
-            <span>(18)</span>
-          </div>
-
-          <div className="checkbox">
-            <span className="unchecked"></span>
-            People
-            <span>(18)</span>
-          </div>
-          <div className="checkbox">
-            <span className="unchecked"></span>
-            Beach
-            <span>(18)</span>
-          </div>
-
-          <div className="checkbox">
-            <span className="unchecked"></span>
-            People
-            <span>(18)</span>
-          </div>
+          {Object.keys(tagList).map((tag, key) => (
+            <div key={key} className="checkbox">
+              <span className="unchecked"></span>
+              {tag}
+              <span>({tagList[tag]})</span>
+            </div>
+          ))}
         </div>
       </Brand>
     </Container>
@@ -54,10 +39,11 @@ const Container = styled.div`
   height: 274px;
   margin-bottom: 24px;
   .title {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 13px;
     color: #697488;
     margin-bottom: 12px;
+    margin-top: 0;
   }
 `;
 

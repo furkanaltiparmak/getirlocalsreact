@@ -16,6 +16,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  padding-top: 136px;
   padding-bottom: 40px;
   color: #1ea4ce;
   .dot {

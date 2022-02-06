@@ -31,7 +31,8 @@ const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 142px;
+  width: 142px;
   grid-column: span 2 / span 2;
   grid-column-start: 6;
+  justify-self: center;
 `;
