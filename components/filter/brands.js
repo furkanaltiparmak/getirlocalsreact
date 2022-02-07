@@ -1,5 +1,6 @@
 //Modules
 import React, { useState } from "react";
+import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 //Icons
 import Check from "../icons/check";
