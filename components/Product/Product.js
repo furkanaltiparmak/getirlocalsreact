@@ -17,6 +17,7 @@ const Product = ({ random, price, name, slug }) => {
     <ProductWrapper>
       <div className="imageContainer flex">
         <img
+          alt={slug}
           className="image"
           src={`https://picsum.photos/124/124?random=${random}`}
         ></img>

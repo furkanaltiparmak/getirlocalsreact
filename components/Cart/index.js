@@ -24,8 +24,8 @@ const ShoppingCart = () => {
         cart.length > 0 ? (
           <Cart>
             <div className="cartItemWrapper">
-              {cart.map((item) => (
-                <CartItem {...item} />
+              {cart.map((item, key) => (
+                <CartItem key={key} {...item} />
               ))}
             </div>
             <TotalPrice>
