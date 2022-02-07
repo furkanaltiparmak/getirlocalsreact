@@ -29,6 +29,7 @@ const Container = styled.header`
   grid-template-columns: repeat(12, 88px);
   gap: 16px;
   justify-content: center;
+  z-index: 10;
   @media (max-width: 1160px) {
     grid-template-columns: repeat(10, 88px);
   }
