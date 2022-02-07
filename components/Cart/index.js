@@ -17,7 +17,7 @@ const ShoppingCart = () => {
   return (
     <CartContainer className="flex">
       <div
-        className="cartBtnWrapper"
+        className="cartBtnWrapper flex"
         onClick={() => setIsCartOpen(!isCartOpen)}
       >
         <div className="cartBtn">
@@ -69,9 +69,6 @@ const CartContainer = styled.div`
     width: 90px;
   }
   .cartBtnWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 14px;
     font-weight: 600;
     width: 100%;
