@@ -30,12 +30,12 @@ const Sorting = () => {
     },
     {
       name: "New to old",
-      value: { sortBy: "asc", key: "added" },
+      value: { sortBy: "desc", key: "added" },
       selected: sort.sortBy === "asc" && sort.key === "added" && true,
     },
     {
       name: "Old to new",
-      value: { sortBy: "desc", key: "added" },
+      value: { sortBy: "asc", key: "added" },
       selected: sort.sortBy === "desc" && sort.key === "added" && true,
     },
   ];
