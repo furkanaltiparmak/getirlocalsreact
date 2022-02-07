@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { getProductsSuccess } from "../../store/slices/productSlice";
 import { getTags, getTypes, getBrands } from "../../store/slices/filterSlice";
 //Components
-import Filters from "../filter";
+import Filters from "../filtera";
 import Products from "../product";
 
 const Content = ({ products, tags, types, brands }) => {

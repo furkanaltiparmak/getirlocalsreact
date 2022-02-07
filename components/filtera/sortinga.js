@@ -2,7 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 //Icons
-import Check from "../icons/check";
+import Check from "../icons/checka";
 import { useSelector, useDispatch } from "react-redux";
 //Store Actions
 import { getProductsFetch } from "../../store/slices/productSlice";

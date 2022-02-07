@@ -2,9 +2,9 @@
 import React from "react";
 import styled from "styled-components";
 //Logo
-import Logo from "../icons/logo";
+import Logo from "../icons/logoa";
 //Components
-import ShoppingCart from "../cart";
+import ShoppingCart from "../carta";
 // Styled Components
 import { FlexContainer } from "../styled/shared";
 const Header = () => {
