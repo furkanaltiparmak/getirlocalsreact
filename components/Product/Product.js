@@ -2,8 +2,12 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
+//Next Modules
+import Image from "next/image";
 //Store Actions
 import { addProduct } from "../../store/slices/cartSlice";
+//Styled Components
+import { FlexContainer } from "../styled/shared";
 
 const Product = ({ random, price, name, slug }) => {
   const dispatch = useDispatch();
@@ -15,19 +19,20 @@ const Product = ({ random, price, name, slug }) => {
 
   return (
     <ProductWrapper>
-      <div className="imageContainer flex">
-        <img
+      <ImageContainer>
+        <Image
           alt={slug}
-          className="image"
           src={`https://picsum.photos/124/124?random=${random}`}
-        ></img>
-      </div>
+          width={92}
+          height={92}
+        />
+      </ImageContainer>
       <span className="price">
         <span>₺ </span>
         {price}
       </span>
       <h1 className="name">{name}</h1>
-      <a onClick={() => onAddClick(slug)} className="productButton flex">
+      <a onClick={() => onAddClick(slug)} className="productButton">
         Add
       </a>
     </ProductWrapper>
@@ -41,16 +46,6 @@ const ProductWrapper = styled.div`
   flex-direction: column;
   height: 225px;
 
-  .imageContainer {
-    width: 124px;
-    height: 124px;
-    border-radius: 12px;
-    border: 2px solid #f3f0fe;
-    margin-bottom: 8px;
-    @media (max-width: 768px) {
-      width: 100%;
-    }
-  }
   .image {
     width: 92px;
     height: 92px;
@@ -72,8 +67,10 @@ const ProductWrapper = styled.div`
   }
   .productButton {
     width: 100%;
-    display: flex;
     height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--main-blue-color);
     color: white;
     font-size: 12px;
@@ -83,5 +80,16 @@ const ProductWrapper = styled.div`
     &:hover {
       opacity: 0.8;
     }
+  }
+`;
+
+export const ImageContainer = styled(FlexContainer)`
+  width: 124px;
+  height: 124px;
+  border-radius: 12px;
+  border: 2px solid #f3f0fe;
+  margin-bottom: 8px;
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;

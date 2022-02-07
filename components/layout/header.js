@@ -2,13 +2,15 @@
 import React from "react";
 import styled from "styled-components";
 //Logo
-import Logo from "../icons/Logo";
+import Logo from "../icons/logo";
 //Components
-import ShoppingCart from "../Cart";
+import ShoppingCart from "../cart";
+// Styled Components
+import { FlexContainer } from "../styled/shared";
 const Header = () => {
   return (
     <Container>
-      <LogoContainer className="flex">
+      <LogoContainer>
         <Logo />
       </LogoContainer>
       <ShoppingCart />
@@ -40,7 +42,7 @@ const Container = styled.header`
   }
 `;
 
-const LogoContainer = styled.div`
+const LogoContainer = styled(FlexContainer)`
   width: 142px;
   grid-column: span 2 / span 2;
   grid-column-start: 6;

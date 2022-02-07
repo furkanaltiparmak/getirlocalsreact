@@ -6,8 +6,8 @@ import styled from "styled-components";
 import { getProductsSuccess } from "../../store/slices/productSlice";
 import { getTags, getTypes, getBrands } from "../../store/slices/filterSlice";
 //Components
-import Filters from "../Filter";
-import Products from "../Product";
+import Filters from "../filter";
+import Products from "../product";
 
 const Content = ({ products, tags, types, brands }) => {
   const dispatch = useDispatch();

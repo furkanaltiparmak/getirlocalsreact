@@ -3,10 +3,12 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 // Icons
-import Minus from "../icons/Minus";
-import Plus from "../icons/Plus";
+import Minus from "../icons/minus";
+import Plus from "../icons/plus";
 // Store Actions
 import { addProduct, removeProduct } from "../../store/slices/cartSlice";
+// Styled Components
+import { FlexContainer } from "../styled/shared";
 const CartItem = ({ name, price, amount, slug }) => {
   const dispatch = useDispatch();
 
@@ -26,15 +28,15 @@ const CartItem = ({ name, price, amount, slug }) => {
           <span className="price">₺{price}</span>
         </div>
         <div className="quantityContainer">
-          <div className="buttonWrapper flex" onClick={() => onRemoveClick()}>
+          <ButtonWrapper onClick={() => onRemoveClick()}>
             <Minus />
-          </div>
-          <div className="quantity flex">
+          </ButtonWrapper>
+          <Quantity>
             <span>{amount}</span>
-          </div>
-          <div className="buttonWrapper flex" onClick={() => onAddClick()}>
+          </Quantity>
+          <ButtonWrapper onClick={() => onAddClick()}>
             <Plus />
-          </div>
+          </ButtonWrapper>
         </div>
       </ItemWrapper>
       <Divider />
@@ -44,24 +46,19 @@ const CartItem = ({ name, price, amount, slug }) => {
 
 export default CartItem;
 
-const ItemWrapper = styled.div`
+export const ItemWrapper = styled.div`
   width: 231px;
   display: flex;
   justify-content: space-between;
   cursor: initial;
   height: 41px;
-
   div {
     color: black;
   }
   p {
     margin: 0px;
   }
-  .buttonWrapper {
-    height: 100%;
-    width: 21px;
-    cursor: pointer;
-  }
+
   .quantityContainer {
     display: flex;
     justify-content: space-between;
@@ -73,18 +70,27 @@ const ItemWrapper = styled.div`
     color: var(--main-blue-color);
     font-weight: 500;
   }
-  .quantity {
-    background-color: #1ea4ce;
+`;
+
+export const Quantity = styled(FlexContainer)`
+  background-color: #1ea4ce;
+  width: 32px;
+  height: 32px;
+  font-weight: bold;
+  margin-left: 4px;
+  margin-right: 4px;
+  span {
     color: var(--main-white-color);
-    width: 32px;
-    height: 32px;
-    font-weight: bold;
-    margin-left: 4px;
-    margin-right: 4px;
   }
 `;
 
-const Divider = styled.span`
+export const ButtonWrapper = styled(FlexContainer)`
+  height: 100%;
+  width: 21px;
+  cursor: pointer;
+`;
+
+export const Divider = styled.span`
   display: flex;
   width: 231px;
   border-bottom: 1px solid #f4f4f4;

@@ -1,5 +1,5 @@
 //Components
-import Content from "../components/Content";
+import Content from "../components/content";
 //Api
 import { api } from "../services/api";
 //Modules

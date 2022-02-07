@@ -5,9 +5,3 @@
 .secondary {
   color: #6f6f6f;
 }
-
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}

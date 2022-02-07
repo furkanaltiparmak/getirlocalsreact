@@ -3,31 +3,34 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 //Icon
-import Lock from "../icons/Lock";
+import Lock from "../icons/lock";
 //Components
-import EmptyCart from "./EmptyCart";
-import CartItem from "./CartItem";
+import EmptyCart from "./empty-cart";
+import CartItem from "./cart-item";
 // Functions
 import { getTotalPrice } from "../../utils/functions";
+// Styled Components
+import { Cart } from "../styled/cart";
+import { FlexContainer } from "../styled/shared";
 
 const ShoppingCart = () => {
   const { cart } = useSelector((state) => state.cartReducer);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
-    <CartContainer className="flex">
-      <div
-        className="cartBtnWrapper flex"
+    <CartContainer>
+      <FlexContainer
+        className="cartBtnWrapper"
         onClick={() => setIsCartOpen(!isCartOpen)}
       >
         <div className="cartBtn">
           <Lock />
           <span>₺ {getTotalPrice(cart)}</span>
         </div>
-      </div>
+      </FlexContainer>
       {isCartOpen ? (
         cart.length > 0 ? (
-          <Cart>
+          <CartWithItems>
             <div className="cartItemWrapper">
               {cart.map((item, key) => (
                 <CartItem key={key} {...item} />
@@ -36,7 +39,7 @@ const ShoppingCart = () => {
             <TotalPrice>
               <span>₺{getTotalPrice(cart)}</span>
             </TotalPrice>
-          </Cart>
+          </CartWithItems>
         ) : (
           <EmptyCart />
         )
@@ -47,7 +50,7 @@ const ShoppingCart = () => {
 
 export default ShoppingCart;
 
-const CartContainer = styled.div`
+const CartContainer = styled(FlexContainer)`
   grid-column-start: 12;
   background-color: #147594;
   width: 129px;
@@ -84,20 +87,8 @@ const CartContainer = styled.div`
   }
 `;
 
-const Cart = styled.div`
-  position: absolute;
-  bottom: -380px;
-  width: 296px;
-  height: 339px;
+const CartWithItems = styled(Cart)`
   padding-top: 27px;
-  border: 8px solid #1ea4ce;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 14px;
-  background-color: var(--main-white-color);
-  cursor: initial;
   @media (max-width: 960px) {
     bottom: -350px;
   }

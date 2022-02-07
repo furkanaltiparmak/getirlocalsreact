@@ -3,9 +3,9 @@ import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 //Components
-import Product from "./Product";
-import ProductSkeleton from "./ProductSkeleton";
-import Pagination from "../Pagination";
+import Product from "./product";
+import ProductSkeleton from "./productSkeleton";
+import Pagination from "../pagination";
 const ProductList = () => {
   const { products, isLoading } = useSelector((state) => state.productReducer);
 

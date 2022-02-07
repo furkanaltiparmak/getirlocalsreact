@@ -2,13 +2,16 @@
 import React from "react";
 import styled from "styled-components";
 //Icons
-import Check from "../icons/Check";
+import Check from "../icons/check";
 import { useSelector, useDispatch } from "react-redux";
 //Store Actions
 import { getProductsFetch } from "../../store/slices/productSlice";
 import { setFilters } from "../../store/slices/filterSlice";
 //Functions
 import { getRequestString } from "../../utils/functions";
+// Styled Components
+import { FilterContainer, FilterWrapper } from "../styled/filter";
+import { FlexContainer } from "../styled/shared";
 
 const Sorting = () => {
   const { filters } = useSelector((state) => state.filterReducer);
@@ -45,78 +48,56 @@ const Sorting = () => {
   };
 
   return (
-    <Container>
+    <FilterContainer sort>
       <h1 className="title">Sorting</h1>
       <Sort>
         {sorts.map((sort, key) => (
           <div
-            className="wrapper"
+            className="sortItemWrapper"
             key={key}
             onClick={() => onSortClick(sort.value)}
           >
-            <span className={`${sort.selected ? "checked flex" : "unchecked"}`}>
-              {sort.selected && (
+            {sort.selected ? (
+              <SortCheckBox checked>
                 <Check width={10} height={7} color={"#1ea4ce"} />
-              )}
-            </span>
+              </SortCheckBox>
+            ) : (
+              <SortCheckBox></SortCheckBox>
+            )}
+
             {sort.name}
           </div>
         ))}
       </Sort>
-    </Container>
+    </FilterContainer>
   );
 };
 
 export default Sorting;
 
-const Container = styled.div`
-  width: 296px;
-  height: 214px;
-  margin-bottom: 24px;
-  @media (max-width: 960px) {
-    width: 100%;
-    padding: 10px;
-  }
-  .title {
-    font-weight: 600;
-    font-size: 13px;
-    color: #697488;
-    margin-bottom: 12px;
-    margin-top: 0;
+export const Sort = styled(FilterWrapper)`
+  height: 184px;
+  .sortItemWrapper {
+    cursor: pointer;
   }
 `;
 
-const Sort = styled.div`
-  width: 100%;
-  height: 184px;
-  background-color: var(--main-white-color);
-  display: flex;
-  flex-direction: column;
-  border-radius: 2px;
-  color: #525252;
-  padding-top: 24px;
-  padding-left: 24px;
-  .wrapper {
-    cursor: pointer;
-  }
-  div {
-    display: flex;
-    font-size: 14px;
-  }
-  .checked {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    border: 2px solid var(--main-blue-color);
-    margin-right: 12px;
-    margin-bottom: 16px;
-  }
-  .unchecked {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    border: 2px solid #dfdee2;
-    margin-right: 12px;
-    margin-bottom: 16px;
-  }
+export const SortItem = styled.span`
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid
+    ${(props) => (props.checked ? "var(--main-blue-color)" : "#dfdee2")};
+  margin-right: 12px;
+  margin-bottom: 16px;
+`;
+
+export const SortCheckBox = styled(FlexContainer)`
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid
+    ${(props) => (props.checked ? "var(--main-blue-color)" : "#dfdee2")};
+  margin-right: 12px;
+  margin-bottom: 16px;
 `;

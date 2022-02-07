@@ -4,13 +4,15 @@ import styled from "styled-components";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 //Icons
-import { ArrowLeft } from "../icons/ArrowLeft";
-import { ArrowRight } from "../icons/ArrowRight";
+import { ArrowLeft } from "../icons/arrow-left";
+import { ArrowRight } from "../icons/arrow-right";
 //Store Actions
 import { getProductsFetch } from "../../store/slices/productSlice";
 import { setFilters } from "../../store/slices/filterSlice";
 //Functions
 import { getRequestString } from "../../utils/functions";
+// Styled Components
+import { FlexContainer } from "../styled/shared";
 
 const Pagination = () => {
   const { pages } = useSelector((state) => state.productReducer.products);
@@ -23,22 +25,23 @@ const Pagination = () => {
     dispatch(setFilters(filter));
     dispatch(getProductsFetch(getRequestString(filter)));
   };
+
   return (
     <Container>
       <ReactPaginate
         breakLabel={<div>...</div>}
         nextLabel={
-          <div className="flex pagBtnNext">
+          <FlexContainer className="pagBtnNext">
             <span>Next</span> <ArrowRight />
-          </div>
+          </FlexContainer>
         }
         onPageChange={handlePageClick}
         pageRangeDisplayed={1}
         pageCount={pages}
         previousLabel={
-          <div className="flex pagBtnPrev">
+          <FlexContainer className="pagBtnPrev">
             <ArrowLeft /> <span>Prev</span>
-          </div>
+          </FlexContainer>
         }
         renderOnZeroPageCount={null}
         forcePage={filters.page - 1}

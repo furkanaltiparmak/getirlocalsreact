@@ -3,12 +3,14 @@ import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 //Components
-import ProductList from "./ProductList";
+import ProductList from "./productList";
 //Store Actions
 import { getProductsFetch } from "../../store/slices/productSlice";
 import { setFilters } from "../../store/slices/filterSlice";
 //Functions
 import { getRequestString } from "../../utils/functions";
+// Styled Component
+import { FlexContainer } from "../styled/shared";
 
 const Products = () => {
   const typesList = useSelector((state) => state.filterReducer.types);
@@ -27,15 +29,13 @@ const Products = () => {
       <h1 className="title">Products</h1>
       <div className="filter">
         {typesList.map((type, key) => (
-          <span
+          <FlexContainer
             onClick={() => onTypeSelect(type)}
             key={key}
-            className={`button flex ${
-              type === selected ? "typeSelected" : ""
-            } `}
+            className={`button ${type === selected ? "typeSelected" : ""} `}
           >
             {type}
-          </span>
+          </FlexContainer>
         ))}
       </div>
       <ProductList />
