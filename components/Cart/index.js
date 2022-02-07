@@ -16,9 +16,14 @@ const ShoppingCart = () => {
   const dispatch = useDispatch();
   return (
     <CartContainer className="flex">
-      <div className="cartBtn" onClick={() => setIsCartOpen(!isCartOpen)}>
-        <Lock />
-        <span>₺ {getTotalPrice(cart)}</span>
+      <div
+        className="cartBtnWrapper"
+        onClick={() => setIsCartOpen(!isCartOpen)}
+      >
+        <div className="cartBtn">
+          <Lock />
+          <span>₺ {getTotalPrice(cart)}</span>
+        </div>
       </div>
       {isCartOpen ? (
         cart.length > 0 ? (
@@ -62,6 +67,15 @@ const CartContainer = styled.div`
   }
   @media (max-width: 960px) {
     width: 90px;
+  }
+  .cartBtnWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    height: 77px;
   }
   .cartBtn {
     display: flex;
