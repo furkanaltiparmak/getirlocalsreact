@@ -51,6 +51,18 @@ const CartContainer = styled.div`
   &:hover {
     cursor: pointer;
   }
+  @media (max-width: 1280px) {
+    grid-column-start: 11;
+  }
+  @media (max-width: 1160px) {
+    grid-column-start: 10;
+  }
+  @media (max-width: 1060px) {
+    grid-column-start: 8;
+  }
+  @media (max-width: 960px) {
+    width: 90px;
+  }
   .cartBtn {
     display: flex;
     justify-content: space-between;
@@ -75,6 +87,9 @@ const Cart = styled.div`
   font-size: 14px;
   background-color: var(--main-white-color);
   cursor: initial;
+  @media (max-width: 960px) {
+    bottom: -350px;
+  }
   .cartItemWrapper {
     height: 228px;
     overflow-y: scroll;

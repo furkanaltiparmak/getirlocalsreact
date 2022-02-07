@@ -84,6 +84,10 @@ const Container = styled.div`
   width: 296px;
   height: 274px;
   margin-bottom: 24px;
+  @media (max-width: 960px) {
+    width: 100%;
+    padding: 10px;
+  }
   .title {
     font-weight: 600;
     font-size: 13px;
@@ -103,6 +107,9 @@ const Brand = styled.div`
   color: #525252;
   padding-top: 24px;
   padding-left: 24px;
+  @media (max-width: 960px) {
+    padding-right: 24px;
+  }
   div {
     display: flex;
     font-size: 14px;
@@ -118,6 +125,10 @@ const Brand = styled.div`
     padding-top: 12px;
     padding-bottom: 12px;
     margin-bottom: 17px;
+    @media (max-width: 960px) {
+      width: 100%;
+      padding-right: 16px;
+    }
     input {
       height: 24px;
       font-size: 14px;
@@ -126,6 +137,9 @@ const Brand = styled.div`
       color: #525252;
       ::placeholder {
         color: #a8a8a8;
+      }
+      @media (max-width: 960px) {
+        width: 100%;
       }
     }
   }
@@ -137,6 +151,9 @@ const Brand = styled.div`
     width: 248px;
     position: relative;
     z-index: 1;
+    @media (max-width: 960px) {
+      width: 100%;
+    }
     .checkbox {
       padding-left: 4px;
       padding-top: 4px;
@@ -166,5 +183,8 @@ const Brand = styled.div`
   }
   .option-text {
     width: 200px;
+    @media (max-width: 960px) {
+      width: 300px;
+    }
   }
 `;

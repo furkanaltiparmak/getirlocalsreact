@@ -27,6 +27,17 @@ const Container = styled.header`
   grid-template-columns: repeat(12, 88px);
   gap: 16px;
   justify-content: center;
+  @media (max-width: 1160px) {
+    grid-template-columns: repeat(10, 88px);
+  }
+  @media (max-width: 1060px) {
+    grid-template-columns: repeat(8, 88px);
+  }
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    position: sticky;
+    top: 0;
+  }
 `;
 
 const LogoContainer = styled.div`
@@ -34,4 +45,16 @@ const LogoContainer = styled.div`
   grid-column: span 2 / span 2;
   grid-column-start: 6;
   justify-self: center;
+  @media (max-width: 1160px) {
+    grid-column-start: 5;
+  }
+  @media (max-width: 1060px) {
+    grid-column-start: 4;
+  }
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    position: sticky;
+    top: 0;
+    width: 100px;
+  }
 `;

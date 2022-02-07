@@ -33,7 +33,7 @@ const Pagination = () => {
           </div>
         }
         onPageChange={handlePageClick}
-        pageRangeDisplayed={4}
+        pageRangeDisplayed={1}
         pageCount={pages}
         previousLabel={
           <div className="flex pagBtnPrev">
@@ -60,16 +60,25 @@ const Container = styled.div`
     justify-content:space-between;
     padding: 0;
     margin: 0;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
     li {
       width: 32px;
       height: 40px;
       display:flex;
       justify-content:center;
       align-items:center;
+      
       &:hover {
         cursor:pointer;
         color:var(--main-blue-color);
       }
+      @media (max-width: 960px) {
+        &:hover {
+        color:white;
+      }
+  }
     }
   }
   .pagBtnNext{
@@ -79,11 +88,17 @@ const Container = styled.div`
     &:hover {
       color:#1ea4ce;
     }
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
   .pagBtnPrev{
     color:#1ea4ce;
     span{
       margin-left:7px;
+    }
+    @media (max-width: 768px) {
+      display: none;
     }
   }
   .selected{

@@ -79,6 +79,10 @@ const Container = styled.div`
     margin-bottom: 12px;
     margin-top: 0;
   }
+  @media (max-width: 960px) {
+    width: 100%;
+    padding: 10px;
+  }
 `;
 
 const Brand = styled.div`
@@ -91,6 +95,9 @@ const Brand = styled.div`
   color: #525252;
   padding-top: 24px;
   padding-left: 24px;
+  @media (max-width: 960px) {
+    padding-right: 24px;
+  }
   div {
     display: flex;
     font-size: 14px;
@@ -106,6 +113,10 @@ const Brand = styled.div`
     padding-top: 12px;
     padding-bottom: 12px;
     margin-bottom: 17px;
+    @media (max-width: 960px) {
+      width: 100%;
+      padding-right: 16px;
+    }
     input {
       height: 24px;
       font-size: 14px;
@@ -115,6 +126,9 @@ const Brand = styled.div`
       ::placeholder {
         color: #a8a8a8;
       }
+      @media (max-width: 960px) {
+        width: 100%;
+      }
     }
   }
   .flex-col {
@@ -123,6 +137,9 @@ const Brand = styled.div`
     overflow: scroll;
     height: 142px;
     width: 248px;
+    @media (max-width: 960px) {
+      width: 100%;
+    }
     .checkbox {
       padding-left: 4px;
       padding-top: 4px;

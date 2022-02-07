@@ -10,7 +10,7 @@ const ProductList = () => {
   const { products, isLoading } = useSelector((state) => state.productReducer);
 
   return (
-    <div>
+    <ListWrapper>
       <Container>
         <div className="gridFourColumn">
           {isLoading ? (
@@ -33,12 +33,16 @@ const ProductList = () => {
         </div>
       </Container>
       <Pagination />
-    </div>
+    </ListWrapper>
   );
 };
 
 export default ProductList;
-
+const ListWrapper = styled.div`
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
 const Container = styled.div`
   padding: 20px;
   margin-bottom: 32px;
@@ -47,6 +51,10 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 124px));
     gap: 20px 24px;
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
   }
   .noProduct {
     grid-column: span 4 / span 4;

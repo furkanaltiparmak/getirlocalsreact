@@ -21,4 +21,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
+  @media (max-width: 1280px) {
+    grid-column-start: 2;
+  }
+  @media (max-width: 1160px) {
+    grid-column-start: 1;
+  }
 `;

@@ -50,7 +50,19 @@ const Container = styled.div`
   align-items: start;
   grid-column-start: 4;
   width: 608px;
-
+  @media (max-width: 1280px) {
+    grid-column-start: 5;
+  }
+  @media (max-width: 1160px) {
+    grid-column-start: 4;
+  }
+  @media (max-width: 960px) {
+    grid-column-start: 1;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 10px;
+  }
   .title {
     font-size: 20px;
     color: var(--main-dark-color);

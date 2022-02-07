@@ -73,6 +73,10 @@ const Container = styled.div`
   width: 296px;
   height: 214px;
   margin-bottom: 24px;
+  @media (max-width: 960px) {
+    width: 100%;
+    padding: 10px;
+  }
   .title {
     font-weight: 600;
     font-size: 13px;

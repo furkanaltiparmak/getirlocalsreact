@@ -46,6 +46,9 @@ const ProductWrapper = styled.div`
     border-radius: 12px;
     border: 2px solid #f3f0fe;
     margin-bottom: 8px;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
   .image {
     width: 92px;
