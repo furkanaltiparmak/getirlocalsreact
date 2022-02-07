@@ -13,7 +13,7 @@ import { getTotalPrice } from "../../utils/functions";
 const ShoppingCart = () => {
   const { cart } = useSelector((state) => state.cartReducer);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const dispatch = useDispatch();
+
   return (
     <CartContainer className="flex">
       <div

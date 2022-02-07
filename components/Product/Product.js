@@ -1,7 +1,7 @@
 //Modules
 import React from "react";
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 //Store Actions
 import { addProduct } from "../../store/slices/cartSlice";
 
