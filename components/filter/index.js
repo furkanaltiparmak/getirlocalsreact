@@ -2,9 +2,9 @@
 import React from "react";
 import styled from "styled-components";
 //Components
-import Sorting from "./sortinga";
-import Brands from "./brandsa";
-import Tags from "./tagsa";
+import Sorting from "./sorting";
+import Brands from "./brands";
+import Tags from "./tags";
 const Filters = () => {
   return (
     <Container>

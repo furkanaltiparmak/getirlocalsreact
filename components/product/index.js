@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 //Components
-import ProductList from "./productLista";
+import ProductList from "./product-list";
 //Store Actions
 import { getProductsFetch } from "../../store/slices/productSlice";
 import { setFilters } from "../../store/slices/filterSlice";

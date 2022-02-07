@@ -1,9 +1,8 @@
 //Modules
 import React, { useState } from "react";
-import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 //Icons
-import Check from "../icons/checka";
+import Check from "../icons/check";
 //Store Actions
 import { getProductsFetch } from "../../store/slices/productSlice";
 import { setFilters } from "../../store/slices/filterSlice";
